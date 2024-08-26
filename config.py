@@ -2,6 +2,8 @@ PHP = 'php'
 PYTHON = 'python'
 GOLANG = 'go'
 
+HOST = 'localhost'
+PORT = 3322
 scripts_path = '/home/alex/PycharmProjects/pythonProject4/scripts/'
 
 
