@@ -4,6 +4,7 @@ GOLANG = 'go'
 
 HOST = 'localhost'
 PORT = 3322
+DEBUG = True
 scripts_path = '/home/alex/PycharmProjects/pythonProject4/scripts/'
 
 

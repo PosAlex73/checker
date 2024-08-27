@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 from test_code import CodeCheck
 from validator import JsonValidateForm
-from config import getLangs, HOST, PORT
+from config import getLangs, HOST, PORT, DEBUG
 
 app = Flask(__name__)
 
@@ -24,4 +24,4 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run(host=HOST, port=PORT)
+    app.run(host=HOST, port=PORT, debug=DEBUG)

@@ -1,1 +1,1 @@
-fsdfsdfsdf
+print('fsdfsdfsfsd')
