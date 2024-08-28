@@ -13,7 +13,13 @@ class CodeCheck:
         with tempfile.NamedTemporaryFile(delete=True) as script:
             script.write(bytes(self.code, 'utf-8'))
 
-            output = client.containers.run('python:3.12', 'python3 /testing/script.py', detach=True,
-                                           volumes=["/home/alex/PycharmProjects/pythonProject4/testing:/testing/"])
+            output = client.containers.run(
+                'python:3.12',
+                'python3 /testing/script.py',
+                detach=False,
+                volumes=["/home/alex/PycharmProjects/pythonProject4/testing:/testing/"],
+                stderr=True,
+                stdout=True
+            )
 
-        return {"errors": {}, "output": str(output.logs())}
+        return {"errors": {}, "output": str(output, encoding='utf-8')}
