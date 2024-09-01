@@ -5,16 +5,6 @@ GOLANG = 'go'
 HOST = 'localhost'
 PORT = 3322
 DEBUG = True
-scripts_path = '/home/alex/PycharmProjects/pythonProject4/scripts/'
-
-
-def getLangImage(self, name):
-    if name == PHP:
-        return 'php:8.2-cli'
-    elif name == PYTHON:
-        return 'python:3.12'
-    elif name == GOLANG:
-        return 'golang:1.22'
 
 
 def getLangs():

@@ -15,12 +15,9 @@ def index():
     if form.validate():
         code_checker = CodeCheck(jsonData["language"], jsonData["code"])
         docker_settings = get_docker_settings(code_checker.language)
-
-        result = code_checker.check_code()
-
-        if len(result["errors"]) == 0:
-            json = {"errors": 0, "output": result["output"]}
-            return jsonify(json)
+        result = code_checker.check_code(docker_settings)
+        json = result.toJson()
+        return jsonify(json)
     else:
         json = {"errors": form.errors}
         return jsonify(json)
