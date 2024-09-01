@@ -1,3 +1,5 @@
+import os.path
+
 import docker
 import tempfile
 
@@ -10,14 +12,17 @@ class CodeCheck:
     def check_code(self):
         client = docker.from_env()
 
-        with tempfile.NamedTemporaryFile(delete=True) as script:
-            script.write(bytes(self.code, 'utf-8'))
+        with tempfile.NamedTemporaryFile(mode='w+t', delete=True) as script:
+            script.write(self.code)
+            script.seek(0)
+            file_name = os.path.basename(script.name)
+            file_path = os.path.dirname(script.name)
 
             output = client.containers.run(
                 'python:3.12',
-                'python3 /testing/script.py',
+                'python3 /testing/' + file_name,
                 detach=False,
-                volumes=["/home/alex/PycharmProjects/pythonProject4/testing:/testing/"],
+                volumes=[file_path + ":/testing/"],
                 stderr=True,
                 stdout=True
             )
