@@ -9,7 +9,7 @@ class CodeCheck:
         self.language = language
         self.code = code
 
-    def check_code(self):
+    def check_code(self, docker_settings):
         client = docker.from_env()
 
         with tempfile.NamedTemporaryFile(mode='w+t', delete=True) as script:
@@ -24,7 +24,7 @@ class CodeCheck:
                 detach=False,
                 volumes=[file_path + ":/testing/"],
                 stderr=True,
-                stdout=True
+                stdout=True,
             )
 
         return {"errors": {}, "output": str(output, encoding='utf-8')}

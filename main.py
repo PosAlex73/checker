@@ -1,7 +1,8 @@
 from flask import Flask, jsonify, request
 from test_code import CodeCheck
 from validator import JsonValidateForm
-from config import getLangs, HOST, PORT, DEBUG
+from config import HOST, PORT, DEBUG
+from language import get_docker_settings
 
 app = Flask(__name__)
 
@@ -13,6 +14,8 @@ def index():
 
     if form.validate():
         code_checker = CodeCheck(jsonData["language"], jsonData["code"])
+        docker_settings = get_docker_settings(code_checker.language)
+
         result = code_checker.check_code()
 
         if len(result["errors"]) == 0:
