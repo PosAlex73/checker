@@ -33,12 +33,7 @@ class CodeCheck:
                     isolation='default'
                 )
         except docker.errors.ContainerError as e:
-            return responses.Response(
-                'Ошибка при исполнении кода',
-                {
-                    'errors': f"{e}"
-                }
-            )
+            return responses.create_common_error_response(e)
 
         return responses.Response(
             str(output, encoding='utf-8'),
