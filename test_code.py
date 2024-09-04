@@ -35,7 +35,4 @@ class CodeCheck:
         except docker.errors.ContainerError as e:
             return responses.create_common_error_response(e)
 
-        return responses.Response(
-            str(output, encoding='utf-8'),
-            {}
-        )
+        return responses.create_response(output)

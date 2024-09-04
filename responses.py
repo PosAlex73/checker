@@ -17,3 +17,10 @@ def create_common_error_response(e):
                     'errors': f"{e}"
                 }
             )
+
+
+def create_response(output):
+    return Response(
+        str(output, encoding='utf-8'),
+        {}
+    )
