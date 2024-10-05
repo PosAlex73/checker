@@ -23,5 +23,11 @@ def index():
         return jsonify(json)
 
 
+@app.route("/check_alive", methods=["GET"])
+def check_alive():
+    response = {"status": "ok"}
+    return jsonify(response)
+
+
 if __name__ == "__main__":
     app.run(host=HOST, port=PORT, debug=DEBUG)
