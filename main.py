@@ -1,8 +1,8 @@
 from flask import Flask, jsonify, request
 from test_code import CodeCheck
-from validator import JsonValidateForm
+from src.validator import JsonValidateForm
 from config import HOST, PORT, DEBUG
-from language import get_docker_settings
+from src.language import get_docker_settings
 
 app = Flask(__name__)
 

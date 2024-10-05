@@ -2,9 +2,9 @@ import os.path
 
 import docker
 import tempfile
-import responses
+from src import responses
 
-from language import BaseLanguage
+from src.language import BaseLanguage
 
 
 class CodeCheck:
